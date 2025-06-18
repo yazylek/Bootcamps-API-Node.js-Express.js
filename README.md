@@ -45,7 +45,7 @@ Advanced filtering, pagination, geolocation
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yazylek/Bootcamps-API-node.js-Express.js.git
+git clone https://github.com/yazylek/Bootcamps-API-Node.js-Express.js.git
 ```
 ```bash
 cd Bootcamps-API-node.js-Express.js
