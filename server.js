@@ -3,6 +3,7 @@ import colors from "colors";
 import dotenv from "dotenv";
 import { bootcampRouter } from "./routes/bootcamps.js";
 import { connectDB } from "./config/db.js";
+import { errorHandler } from "./middlewares/error.js";
 
 dotenv.config({ path: "./config/config.env" });
 const PORT = process.env.PORT || 5000;
@@ -12,6 +13,8 @@ connectDB();
 app.use(express.json());
 
 app.use("/api/v1/bootcamps", bootcampRouter);
+
+app.use(errorHandler);
 
 const server = app.listen(
   PORT,

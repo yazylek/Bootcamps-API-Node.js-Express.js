@@ -24,7 +24,7 @@ export const getAllBootcamps = async (req, res, next) => {
  *  @Route       GET /api/v1/bootcamps/:id
  *  @Access      Public
  */
-export const getBootcamp = async (req, res) => {
+export const getBootcamp = async (req, res, next) => {
   try {
     const bootcamp = await Bootcamp.findById(req.params.id);
 
@@ -36,8 +36,7 @@ export const getBootcamp = async (req, res) => {
 
     res.status(200).json({ success: true, bootcamp });
   } catch (err) {
-    console.error(err);
-    res.status(400).json({ success: false });
+    next(err);
   }
 };
 
