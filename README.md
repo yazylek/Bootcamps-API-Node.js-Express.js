@@ -1,4 +1,4 @@
-# DevCamper API
+# Bootcamps API | Node.js, Express.js
 
 This is a RESTful API built with **Node.js**, **Express**, and **MongoDB** using **Mongoose**.  
 The project is currently **under development** and is meant to serve as a backend for a bootcamp directory platform.
@@ -46,10 +46,19 @@ Advanced filtering, pagination, geolocation
 
 ```bash
 git clone https://github.com/yazylek/Bootcamps-API-node.js-Express.js.git
+```
+```bash
 cd Bootcamps-API-node.js-Express.js
+```
+```bash
 npm install
+```
 Create a .env file in the root directory and add the following:
+
+```bash
 MONGO_URI=<your-mongodb-connection-string>
 PORT=5000
+```
+```bash
 npm run dev
-
+```
