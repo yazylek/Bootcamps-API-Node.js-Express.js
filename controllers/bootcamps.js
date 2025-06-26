@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { asyncHandler } from "../middlewares/async.js";
 import { geocoder } from "../util/geocoder.js";
 import { Bootcamp } from "../models/Bootcamps.js";
+import { ErrorResponse } from "../util/errorResponse.js";
 /**
  *  @Desc        Get all Bootcamps
  *  @Route       GET /api/v1/bootcamps/:id

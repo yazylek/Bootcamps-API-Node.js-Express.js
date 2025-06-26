@@ -11,6 +11,8 @@ export const protect = asyncHandler(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  } else if (req.cookies.token) {
+    token = req.cookies.token;
   }
 
   if (!token) {
@@ -29,3 +31,15 @@ export const protect = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("Not authorize to access this route", 401));
   }
 });
+
+export const roleAuthorize = (...roles) => {
+  return (req, res, next) => {
+    console.log(req.user.role);
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new ErrorResponse("No permissions to add or modify that object", 403)
+      );
+    }
+    next();
+  };
+};
