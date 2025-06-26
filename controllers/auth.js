@@ -11,6 +11,7 @@ import crypto from "node:crypto";
  */
 
 export const register = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   const { name, email, role, password } = req.body;
 
   const user = await User.create({
@@ -30,6 +31,7 @@ export const register = asyncHandler(async (req, res, next) => {
  */
 
 export const login = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -57,6 +59,7 @@ export const login = asyncHandler(async (req, res, next) => {
  *  @Access      private
  */
 export const getUser = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   console.log(req.user);
   const user = await User.findById(req.user.id);
 
@@ -69,6 +72,7 @@ export const getUser = asyncHandler(async (req, res, next) => {
  *  @Access      private
  */
 export const logout = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   res.cookie("token", "none", {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
@@ -82,6 +86,7 @@ export const logout = asyncHandler(async (req, res, next) => {
  *  @Access      public
  */
 export const forgotPassword = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
@@ -126,6 +131,7 @@ export const forgotPassword = asyncHandler(async (req, res, next) => {
  */
 
 export const resetPassword = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["User"]
   //  get hashed token
   const resetPasswordToken = crypto
     .createHash("sha256")

@@ -13,6 +13,7 @@ const Course = mongoose.model("Course", CourseSchema);
  *  @Access      Public
  */
 export const getCourses = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Courses"]
   let query;
 
   if (req.params.bootcampId) {
@@ -35,6 +36,7 @@ export const getCourses = asyncHandler(async (req, res, next) => {
  *  @Access      Public
  */
 export const getCourse = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Courses"]
   const course = await Course.findById(req.params.id).populate({
     path: "bootcamp",
     select: "name description",
@@ -55,6 +57,7 @@ export const getCourse = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const createCourse = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Courses"]
   req.body.bootcamp = req.params.bootcampId;
 
   const bootcamp = await Bootcamp.findById(req.params.bootcampId);
@@ -79,6 +82,7 @@ export const createCourse = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const updateCourse = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Courses"]
   let course = await Course.findById(req.params.id);
 
   if (!course) {
@@ -101,6 +105,7 @@ export const updateCourse = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const deleteCourse = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Courses"]
   let course = await Course.findById(req.params.id);
 
   if (!course) {

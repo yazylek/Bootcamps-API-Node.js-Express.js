@@ -13,6 +13,8 @@ import xss from "xss";
 import rateLimit from "express-rate-limit";
 import hpp from "hpp";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger-output.json" with { type: "json"};
 
 dotenv.config({ path: "./config/config.env" });
 const PORT = process.env.PORT || 5000;
@@ -58,6 +60,10 @@ app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use(errorHandler);
+
+// Swagger
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const server = app.listen(
   PORT,

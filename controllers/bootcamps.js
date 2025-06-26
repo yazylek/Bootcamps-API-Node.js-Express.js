@@ -9,6 +9,7 @@ import { ErrorResponse } from "../util/errorResponse.js";
  *  @Access      Public
  */
 export const getAllBootcamps = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
   // TODO Query $LTE $GTE etc...
 
   let queryObj = { ...req.query };
@@ -71,6 +72,9 @@ export const getAllBootcamps = asyncHandler(async (req, res, next) => {
  *  @Access      Public
  */
 export const getBootcamp = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
+  // #swagger.auto = false
+  // #swagger.path = '/bootcamps/{id}'
   const bootcamp = await Bootcamp.findById(req.params.id);
 
   if (!bootcamp) {
@@ -88,6 +92,7 @@ export const getBootcamp = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const createBootcamp = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
   const bootcamp = await Bootcamp.create(req.body);
 
   res.status(200).json({ success: true, data: bootcamp });
@@ -99,6 +104,7 @@ export const createBootcamp = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const updateBootcamp = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
   const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
     runValidators: true,
     new: true,
@@ -117,6 +123,7 @@ export const updateBootcamp = asyncHandler(async (req, res, next) => {
  *  @Access      Private
  */
 export const deleteBootcamp = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
   const bootcamp = await Bootcamp.findById(req.params.id);
 
   if (!bootcamp) {
@@ -134,6 +141,7 @@ export const deleteBootcamp = asyncHandler(async (req, res, next) => {
  *  @Access      Public
  */
 export const getBootcampsInRadius = asyncHandler(async (req, res, next) => {
+  // #swagger.tags =["Bootcamps"]
   const { zipcode, distance } = req.params;
 
   const loc = await geocoder.geocode(zipcode);
