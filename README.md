@@ -1,4 +1,4 @@
-# 📚 Bootcamp API
+# 📚 TrainifyAPI
 
 This API allows users to register, manage bootcamps, create courses, and handle authentication processes like login and password reset.
 
